@@ -74,7 +74,7 @@ MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)  // left-hand HRMs
 MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
 
 // special HRMs for the right meh key, as it involves a modmorph
-MAKE_HRM(hmr_meh, &kp, &comma_morph, KEYS_L THUMBS)
+// OUT WHAT IS MEH?   MAKE_HRM(hmr_meh, &kp, &comma_morph, KEYS_L THUMBS)
 // MAKE_HRM(hmr_lpar, &kp, &lpar, KEYS_L THUMBS)    // "    "   "   "
 // MAKE_HRM(hmr_rpar, &kp, &rpar, KEYS_L THUMBS)    // "    "   "   "
 
@@ -105,7 +105,7 @@ ZMK_BEHAVIOR(dot_morph, mod_morph,
             bindings = <
             &kp Q         &kp W         &kp E            &kp R            &kp T              &kp Y         &kp U              &kp I            &kp O         &kp APOS 
             &hml LCTRL A  &hml LALT S   &hml LGUI D      &hml LSHFT F     &kp G              &kp H         &hmr RSHFT J       &hmr RGUI K      &hmr LALT L   &hmr RCTRL P
-&kp TAB    &kp Z         &kp X         &hml MEH C       &hml HYP V       &kp B              &kp N         &hmr HYP M         &hmr_meh MEH 0   &dot_morph    &qexcl        &kp TAB
+&kp TAB     &kp Z         &kp X         &hml MEH C       &hml HYP V       &kp B              &kp N         &hmr HYP M         &comma_morph     &dot_morph    &qexcl        &kp TAB
                                         &lt UTIL ESC     &lt NAV SPACE    &sk LSHFT          &kp RET       &lt NUM BSPC       &lt FUN DEL
             >;
         };
