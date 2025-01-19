@@ -85,7 +85,7 @@ ZMK_BEHAVIOR(qexcl, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
-// tap: comma | shift + tap: semicolon 
+// tap: comma | shift + tap: semicolon
 ZMK_BEHAVIOR(comma_morph, mod_morph,
     bindings = <&kp COMMA>, <&kp SEMICOLON>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
