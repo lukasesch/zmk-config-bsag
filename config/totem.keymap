@@ -98,26 +98,63 @@ ZMK_BEHAVIOR(dot_morph, mod_morph,
 )
 
 // Eigene weirde Mappings
-// Definition für print
-ZMK_BEHAVIOR(printtt, macro,
-    bindings = <&kp LGUI>, <&kp LSHFT>, <&kp LCTRL>, <&kp N4>;
-);
+/ {
+    macros {
+        // cmd + shift + ctrl + 4
+        print_macro: print_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI &kp LSHFT &kp LCTRL>
+                , <&macro_tap &kp N4>
+                , <&macro_release &kp LGUI &kp LSHFT &kp LCTRL>
+                ;
+        };
 
-ZMK_BEHAVIOR(printdesk, macro,
-    bindings = <&kp LGUI>, <&kp LSHFT>, <&kp N4>;
-);
+        // cmd + shift + 4
+        printdesk_macro: printdesk_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI &kp LSHFT>
+                , <&macro_tap &kp N4>
+                , <&macro_release &kp LGUI &kp LSHFT>
+                ;
+        };
 
-ZMK_BEHAVIOR(pwd, macro,
-    bindings = <&kp LGUI>, <&kp LSHFT>, <&kp SPACE>;
-);
+        // cmd + shift + space
+        pwd_macro: pwd_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI &kp LSHFT>
+                , <&macro_tap &kp SPACE>
+                , <&macro_release &kp LGUI &kp LSHFT>
+                ;
+        };
 
-ZMK_BEHAVIOR(smiley, macro,
-    bindings = <&kp LGUI>, <&kp LCTRL>, <&kp SPACE>;
-);
+        // cmd + ctrl + space
+        smiley_macro: smiley_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI &kp LCTRL>
+                , <&macro_tap &kp SPACE>
+                , <&macro_release &kp LGUI &kp LCTRL>
+                ;
+        };
 
-ZMK_BEHAVIOR(aerospace, macro,
-    bindings = <&kp LGUI>, <&kp LALT>;
-);
+        // cmd + option
+        aerospace_macro: aerospace_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI &kp LALT>
+                , <&macro_release &kp LGUI &kp LALT>
+                ;
+        };
+    };
+};
 
 / {
 // TODO: Add hyper key as HRM
@@ -158,7 +195,7 @@ ZMK_BEHAVIOR(aerospace, macro,
         util_layer {
             bindings = <
             &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2    &bt BT_CLR      ___                       ___           ___               &kp C_VOL_UP    ___           ___
-            &printtt     &smiley      &aerospace      &pwd            &printdesk                ___           &kp C_PREVIOUS    &kp C_VOL_DN    &kp C_NEXT    ___
+            &print_macro     &smiley_macro  &aerospace_macro  &pwd_macro  &printdesk_macro      ___           &kp C_PREVIOUS    &kp C_VOL_DN    &kp C_NEXT    ___
     ___     ___          ___          ___             ___             ___                       ___           ___               ___             ___           ___             ___
                                       ___             ___             ___                       ___           &kp C_PLAY_PAUSE  &kp C_MUTE
             >;
