@@ -150,6 +150,7 @@ ZMK_BEHAVIOR(dot_morph, mod_morph,
             #binding-cells = <0>;
             bindings
                 = <&macro_press &kp LGUI &kp LALT>
+                , <&macro_tap>
                 , <&macro_release &kp LGUI &kp LALT>
                 ;
         };
