@@ -32,7 +32,7 @@
 #define QUICK_TAP_MS 175
 
 // smart-layer config
-&caps_word {  
+&caps_word {
     // /delete-property/ ignore-modifiers; // mods deactivate, requires PR #1451
     /delete-property/ ignore-numbers;
     continue-list = <BACKSPACE ENTER DELETE UNDERSCORE MINUS>;
@@ -50,7 +50,7 @@
 };
 
 // default layer-tap config
-&lt {  
+&lt {
     flavor = "balanced";
     tapping-term-ms = <200>;
     quick-tap-ms = <QUICK_TAP_MS>;
@@ -91,11 +91,33 @@ ZMK_BEHAVIOR(comma_morph, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
-// tap: dot | shift + tap: colon 
+// tap: dot | shift + tap: colon
 ZMK_BEHAVIOR(dot_morph, mod_morph,
     bindings = <&kp DOT>, <&kp COLON>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
+
+// Eigene weirde Mappings
+// Definition für print
+ZMK_BEHAVIOR(print, macro,
+    bindings = <&kp LCMD &kp LSHFT &kp LCTRL &kp N4>;
+);
+// Definition für printdesk
+ZMK_BEHAVIOR(printdesk, macro,
+    bindings = <&kp LCMD &kp LSHFT &kp N4>;
+);
+// Definition für pwd
+ZMK_BEHAVIOR(pwd, macro,
+    bindings = <&kp LCMD &kp LSHFT &kp SPACE>;
+);
+// Definition für smiley
+ZMK_BEHAVIOR(smiley, macro,
+    bindings = <&kp LCMD &kp LCTRL &kp SPACE>;
+);
+// Definition für aerospace
+ZMK_BEHAVIOR(aerospace, macro,
+    bindings = <&kp LCMD &kp LALT>;
+);
 
 / {
 // TODO: Add hyper key as HRM
@@ -103,23 +125,23 @@ ZMK_BEHAVIOR(dot_morph, mod_morph,
         compatible = "zmk,keymap";
         default_layer { // ColemakDHm edited to QWERTY
             bindings = <
-            &kp Q         &kp W         &kp E            &kp R            &kp T              &kp Y         &kp U              &kp I            &kp O         &kp APOS 
+            &kp Q         &kp W         &kp E            &kp R            &kp T              &kp Y         &kp U              &kp I            &kp O         &kp APOS
             &hml LCTRL A  &hml LALT S   &hml LGUI D      &hml LSHFT F     &kp G              &kp H         &hmr RSHFT J       &hmr RGUI K      &hmr LALT L   &hmr RCTRL P
 &kp TAB     &kp Z         &kp X         &hml MEH C       &hml HYP V       &kp B              &kp N         &hmr HYP M         &hmr_meh MEH 0     &dot_morph    &qexcl        &kp TAB
                                         &lt UTIL ESC     &lt NAV SPACE    &sk LSHFT          &kp RET       &lt NUM BSPC       &lt FUN DEL
             >;
         };
-        nav_layer { 
+        nav_layer {
             bindings = <
-            ___          ___          ___             ___             ___                ___           &kp HOME          &kp UP          &kp END       &kp PAGE_UP 
-            &kp LCTRL     &kp LALT     &kp LGUI       &kp LSHFT       ___                ___           &kp LEFT          &kp DOWN        &kp RIGHT     &kp PAGE_DOWN
+            ___          ___          ___             ___             ___                ___           &kp HOME          &kp UP          &kp END       &kp PAGE_UP
+            &kp LCTRL     &kp LALT     &kp LGUI       &kp LSHFT       ___                &smiley       &kp LEFT          &kp DOWN        &kp RIGHT     &kp PAGE_DOWN
     BACK    ___           ___          &kp MEH         &kp HYP         ___                ___          &kp TILDE         ___             &kp FSLH      ___             FWD
                                        ___            ___             ___                &kp RET       &kp BSPC          &kp DEL
             >;
-        }; 
+        };
         num_layer {
             bindings = <
-            &kp PLUS     &kp N7       &kp N8          &kp  N9         &kp STAR           ___           ___               ___             ___           ___ 
+            &kp PLUS     &kp N7       &kp N8          &kp  N9         &kp STAR           ___           ___               ___             ___           ___
             &kp N0       &kp N4       &kp N5          &kp  N6         &kp EQUAL          ___           &kp LSHFT         &kp LGUI        &kp LALT      &kp LCTRL
   &kp LPAR  &kp MINUS    &kp N1       &kp N2          &kp  N3         &kp FSLH           ___           &kp HYP           &kp MEH         ___           ___            &kp RPAR
                                       ___             &kp  DOT        &kp SEMI           ___           ___               ___
@@ -128,22 +150,22 @@ ZMK_BEHAVIOR(dot_morph, mod_morph,
         fun_layer {
             bindings = <
             &kp F12      &kp F7       &kp F8          &kp F9          ___                ___           ___               ___             ___           ___
-            &kp F11      &kp F4       &kp F5          &kp F6          ___                ___           &kp LSHFT         &kp LGUI        &kp LALT      &kp LCTRL 
+            &kp F11      &kp F4       &kp F5          &kp F6          ___                ___           &kp LSHFT         &kp LGUI        &kp LALT      &kp LCTRL
     ___     &kp F10      &kp F1       &kp F2          &kp F3          ___                ___           &kp HYP           &kp MEH         ___           ___             ___
                                       ___             ___             ___                ___           ___               ___
             >;
         };
         util_layer {
             bindings = <
-            &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2    &bt BT_CLR      ___                ___           ___               &kp C_VOL_UP    ___           ___
-            &kp LCTRL     &kp LALT     &kp LGUI       &kp LSHFT      ___                ___            &kp C_PREVIOUS    &kp C_VOL_DN    &kp C_NEXT           ___ 
-    ___     ___          ___          ___             &kp HYP        ___                ___            ___               ___             ___           ___             ___
-                                      ___             ___             ___                ___           &kp C_PLAY_PAUSE  &kp C_MUTE
+            &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2    &bt BT_CLR      &print                ___           ___               &kp C_VOL_UP    ___           ___
+            &kp LCTRL     &kp LALT     &kp LGUI       &kp LSHFT       &printdesk            ___           &kp C_PREVIOUS    &kp C_VOL_DN    &kp C_NEXT           ___
+    ___     ___          ___          ___             &kp HYP         &pwd                  ___           ___               ___             ___           ___             ___
+                                      ___             &aerospace      &smiley               ___           &kp C_PLAY_PAUSE  &kp C_MUTE
             >;
-        };  
+        };
     };
 };
-    
+
 /* --------------------------------- combos --------------------------------- */
 /*
    ╭────────────────────┬────────────────────╮     ╭─────────────────────┬─────────────────────╮
