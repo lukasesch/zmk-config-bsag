@@ -30,7 +30,6 @@
 
 /* ------------------------ general config ----------------------- */
 
-// LUKAS EDIT: was set to 175
 #define QUICK_TAP_MS 150
 
 // smart-layer config
@@ -67,7 +66,6 @@
         flavor = "balanced"; \
         tapping-term-ms = <280>; \
         quick-tap-ms = <QUICK_TAP_MS>; \
-        // LUKAS EDIT: was set to 150
         require-prior-idle-ms = <125>; \
         bindings = <HOLD>, <TAP>; \
         hold-trigger-key-positions = <TRIGGER_POS>; \
