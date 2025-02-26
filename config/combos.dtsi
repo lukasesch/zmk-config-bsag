@@ -13,7 +13,7 @@
 #define COMBO_HOOK require-prior-idle-ms = <150>;
 
 #define COMBO_TERM_FAST 18
-#define COMBO_TERM_SLOW 30
+#define COMBO_TERM_SLOW 40
 
 // Make sure that home row combos are tap only so that you can chord HRMs
 // #define HRC_LPAR   &hmr_lpar RS(RGUI) 0
